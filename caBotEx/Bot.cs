@@ -74,16 +74,12 @@ namespace caBotCF
             }
         }
 
-        Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
-        {
-            //Задаем сообщение об ошибке в зависимости от того, какая именно ошибка произошла
-=========
-            }        }
+
 
         Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
             //Задаем сообщение об ошибке в зависимости от того, какая именно ошибка  произошла
->>>>>>>>> Temporary merge branch 2
+
             var errorMessage = exception switch
             {
                 ApiRequestException apiRequestException
