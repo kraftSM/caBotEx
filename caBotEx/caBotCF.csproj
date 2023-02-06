@@ -51,6 +51,7 @@
     <Folder Include="Models\" />
     <Folder Include="Services\" />
     <Folder Include="Utilities\" />
+    <Folder Include="BotProperties\" />
   </ItemGroup>
 
 </Project>

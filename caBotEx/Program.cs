@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Telegram.Bot;
+using caBotCF.Controllers;
+using caBotCF.Services;
+using caBotCF.Configuration;
 
 namespace caBotCF
 {
@@ -30,10 +33,31 @@ namespace caBotCF
 
         static void ConfigureServices(IServiceCollection services)
         {
+            AppSettings appSettings = BuildAppSettings();
+            services.AddSingleton(BuildAppSettings());
+
+            services.AddSingleton<IStorage, MemoryStorage>();
+
+            // Подключаем контроллеры сообщений и кнопок          
+            services.AddTransient<DefaultMessageController>();
+            services.AddTransient<VoiceMessageController>();
+            services.AddTransient<TextMessageController>();
+            services.AddTransient<InlineKeyboardController>();
+
             // Регистрируем объект TelegramBotClient c токеном подключения
-            services.AddSingleton<ITelegramBotClient>(provider => new TelegramBotClient("5626451216:AAHQhegrbUZ7EchZWrNdzsfJrG7Jp15yYiA"));
-            // Регистрируем постоянно активный сервис бота
+            //services.AddSingleton<ITelegramBotClient>(provider => new TelegramBotClient("5626451216:AAHQhegrbUZ7EchZWrNdzsfJrG7Jp15yYiA"));
+            services.AddSingleton<ITelegramBotClient>(provider => new TelegramBotClient(appSettings.BotToken));// Регистрируем постоянно активный сервис бота
             services.AddHostedService<Bot>();
+        }
+        static AppSettings BuildAppSettings()
+        {
+            return new AppSettings()
+            {
+                DownloadsFolder = "C:\\Users\\evmor\\Downloads",
+                BotToken = "5626451216:AAHQhegrbUZ7EchZWrNdzsfJrG7Jp15yYiA",
+                AudioFileName = "audio",
+                InputAudioFormat = "ogg",
+            };
         }
     }
 
