@@ -45,7 +45,8 @@ namespace caBotCF
                 await _telegramClient.SendTextMessageAsync(update.Message.Chat.Id, "Вы отправили сообщение: "+ update.Message.Text, cancellationToken: cancellationToken);
                 Console.WriteLine("Получено сообщение:{0}", update.Message.Text);
                 return;
-            }        }
+            }
+        }
 
         Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
