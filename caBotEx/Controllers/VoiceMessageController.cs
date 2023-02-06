@@ -5,22 +5,33 @@ using System.Text;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
+using caBotCF.Configuration;
+using caBotCF.Services;
+
 
 namespace caBotCF.Controllers
 {
     public class VoiceMessageController
     {
+        private readonly AppSettings _appSettings;
         private readonly ITelegramBotClient _telegramClient;
-
-        public VoiceMessageController (ITelegramBotClient telegramBotClient)
+        private readonly IFileHandler _audioFileHandler;
+        public VoiceMessageController(AppSettings appSettings, ITelegramBotClient telegramBotClient, IFileHandler audioFileHandler)
         {
+            _appSettings = appSettings;
             _telegramClient = telegramBotClient;
+            _audioFileHandler = audioFileHandler;
         }
+
         public async Task Handle(Message message, CancellationToken ct)
         {
-            Console.WriteLine($"Контроллер {GetType().Name} получил сообщение");
-            await _telegramClient.SendTextMessageAsync(message.Chat.Id, $"Получено голосовое сообщение", cancellationToken: ct);
+            var fileId = message.Voice?.FileId;
+            if (fileId == null)
+                return;
 
+            await _audioFileHandler.Download(fileId, ct);
+
+            await _telegramClient.SendTextMessageAsync(message.Chat.Id, "Голосовое сообщение загружено", cancellationToken: ct);
         }
     }
 }

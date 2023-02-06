@@ -47,7 +47,7 @@ namespace kStreamBot.Controllers
                     
                     break;
                 default:
-                    await _telegramClient.SendTextMessageAsync(message.Chat.Id, "Отправьте аудио для превращения в текст.", cancellationToken: ct);
+                    await _telegramClient.SendTextMessageAsync(message.Chat.Id, "ВЫберите действие нажатием на кнопку.", cancellationToken: ct);
                     break;
             }
         }
