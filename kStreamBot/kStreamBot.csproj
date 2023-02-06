@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -10,7 +10,7 @@
 		<Folder Include="Models\" />
 		<Folder Include="Services\" />
 		<Folder Include="Configuration\" />
-		<Folder Include="Controllers\" />
+		<Folder Include="SubTask\" />
 	</ItemGroup>
 
 	<ItemGroup>

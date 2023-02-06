@@ -9,5 +9,6 @@ namespace kStreamBot.Models
     public class Session
     {
         public string LanguageCode { get; set; }
+        public string Mode { get; set; }
     }
 }

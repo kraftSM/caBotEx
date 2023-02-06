@@ -35,12 +35,14 @@ namespace kStreamBot
         {
             AppSettings appSettings = BuildAppSettings();
             services.AddSingleton(BuildAppSettings());
+            //SubTask subTask = BuildSubTask();
+            services.AddSingleton<ISubTask, SubTask> ();
 
             services.AddSingleton<IStorage, MemoryStorage>();
 
             // Подключаем контроллеры сообщений и кнопок          
             services.AddTransient<DefaultMessageController>();
-            services.AddTransient<VoiceMessageController>();
+            //services.AddTransient<VoiceMessageController>();
             services.AddTransient<TextMessageController>();
             services.AddTransient<InlineKeyboardController>();
 
@@ -53,11 +55,15 @@ namespace kStreamBot
         {
             return new AppSettings()
             {
-                DownloadsFolder = "C:\\Users\\evmor\\Downloads",
+                DownloadsFolder = "D:\\WinTemp\\!Temp\\SF",
                 BotToken = "5626451216:AAHQhegrbUZ7EchZWrNdzsfJrG7Jp15yYiA",
                 AudioFileName = "audio",
                 InputAudioFormat = "ogg",
             };
+        }
+        static SubTask BuildSubTask()
+        {
+            return new SubTask();
         }
     }
 

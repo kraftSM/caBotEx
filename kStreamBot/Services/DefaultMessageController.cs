@@ -19,8 +19,9 @@ namespace kStreamBot.Controllers
         public async Task Handle(Message message, CancellationToken ct)
         {
             Console.WriteLine($"Контроллер {GetType().Name} получил сообщение {message.Text}");
-            await _telegramClient.SendTextMessageAsync(message.Chat.Id, $"Получено сообщение не поддерживаемого формата", cancellationToken: ct);
+            await _telegramClient.SendTextMessageAsync(message.Chat.Id, $"Получено сообщение не поддерживаемого формата {message.Chat.Id}", cancellationToken: ct);
         }
-    
+
+
     }
 }
