@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "caBotCF", "caBotEx\caBotCF.csproj", "{38ECEC90-C7C0-4C0A-B465-0914623EDBDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38ECEC90-C7C0-4C0A-B465-0914623EDBDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38ECEC90-C7C0-4C0A-B465-0914623EDBDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38ECEC90-C7C0-4C0A-B465-0914623EDBDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38ECEC90-C7C0-4C0A-B465-0914623EDBDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DAB1E089-1203-46B4-BDC2-6BAD66C8E247}
+	EndGlobalSection
+EndGlobal
