@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "caBotCF", "caBotEx\caBotCF.csproj", "{38ECEC90-C7C0-4C0A-B465-0914623EDBDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kStreamBot", "kStreamBot\kStreamBot.csproj", "{5B355E26-8855-478C-AC87-1F2E479D90CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kStreamBot", "kStreamBot\kStreamBot.csproj", "{5B355E26-8855-478C-AC87-1F2E479D90CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "caTestSubTask", "caTestSubTask\caTestSubTask.csproj", "{FACACB54-39DB-4049-9CB7-99F9EE033CA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{5B355E26-8855-478C-AC87-1F2E479D90CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B355E26-8855-478C-AC87-1F2E479D90CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B355E26-8855-478C-AC87-1F2E479D90CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FACACB54-39DB-4049-9CB7-99F9EE033CA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FACACB54-39DB-4049-9CB7-99F9EE033CA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FACACB54-39DB-4049-9CB7-99F9EE033CA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FACACB54-39DB-4049-9CB7-99F9EE033CA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

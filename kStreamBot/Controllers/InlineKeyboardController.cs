@@ -32,7 +32,7 @@ namespace kStreamBot.Controllers
             string modeTxt = callbackQuery.Data switch
             {
                 "cnt" => " Подсчет символов в строке. Введите её",
-                "sum" => " Подсчет суммы целых чисел. Введите их через пробелы",
+                "sum" => " Подсчет суммы целых чисел. Введите их через пробелы. Нверные данные будут отброшены",
                 _ => String.Empty
             };
             //_appSettings.SubTaskMode = modeTxt;

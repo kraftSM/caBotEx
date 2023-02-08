@@ -79,7 +79,8 @@ namespace kStreamBot.Controllers
                 default:
                     resultMsg = _subTask.Operate(message.Text, sTaskMode);
                     //await _telegramClient.SendTextMessageAsync(message.Chat.Id, "ВЫберите действие нажатием на кнопку.[TMCH]", cancellationToken: ct);
-                    await _telegramClient.SendTextMessageAsync(message.Chat.Id, resultMsg+"[TMCH9]", cancellationToken: ct);
+                    //await _telegramClient.SendTextMessageAsync(message.Chat.Id, resultMsg+"[TMCH9]", cancellationToken: ct);//Debug
+                    await _telegramClient.SendTextMessageAsync(message.Chat.Id, resultMsg, cancellationToken: ct);
 
                     _appSettings.SubTaskMode =""; //? нужно ли сразу входить из выбранного режима - надо посмотреть
                     ShowStartMenu(message, ct);   
