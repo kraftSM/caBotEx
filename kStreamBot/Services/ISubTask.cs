@@ -10,7 +10,7 @@ namespace kStreamBot.Controllers
 
     public interface ISubTask
     {
-        public void SetMode(string Mode);
-        public string Operate(string Msg);
+        //public void SetMode(string Mode);
+        public string Operate(string Msg, string Mode = "None");
     }
 }
