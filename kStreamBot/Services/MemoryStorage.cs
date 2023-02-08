@@ -29,6 +29,7 @@ namespace kStreamBot.Services
             // Создаем и возвращаем новую, если такой не было
             var newSession = new Session() { LanguageCode = "ru", Mode="None" };
             _sessions.TryAdd(chatId, newSession);
+            Console.WriteLine($"{GetType().Name}: New Seesinon with {chatId} ");
             return newSession;
         }
     }

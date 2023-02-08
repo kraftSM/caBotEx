@@ -25,6 +25,21 @@ namespace kStreamBot.Controllers
             _subTask = subTask;
         }
 
+        private async void ShowStartMenu (Message message, CancellationToken ct) 
+        {
+            var buttons = new List<InlineKeyboardButton[]>();
+            buttons.Add(new[]
+            {
+                        //InlineKeyboardButton.WithCallbackData($" Русский" , $"ru"),
+                        //InlineKeyboardButton.WithCallbackData($" English" , $"en"),
+                        InlineKeyboardButton.WithCallbackData($" Подсчет символов" , $"cnt"),
+                        InlineKeyboardButton.WithCallbackData($" Сумма чисел" , $"sum")
+                    });
+
+            // передаем кнопки вместе с сообщением (параметр ReplyMarkup)
+            await _telegramClient.SendTextMessageAsync(message.Chat.Id, $"<b>  Этот бот учебный. Он: </b> {Environment.NewLine}" +
+                $"1. Подсчитывает символы в строке {Environment.NewLine}2. Возвращает сумму целых чисел.{Environment.NewLine}Выберите режим кнопками ниже.{Environment.NewLine}", cancellationToken: ct, parseMode: ParseMode.Html, replyMarkup: new InlineKeyboardMarkup(buttons));
+        }
         public async Task Handle(Message message, CancellationToken ct)
         {
             string sTaskMode = _appSettings.SubTaskMode;
@@ -39,34 +54,35 @@ namespace kStreamBot.Controllers
             {
                 
             case "/start":
+                    ShowStartMenu(message, ct);
                     Console.WriteLine(" Получена команда /start Бот (пере)запущен");
                     // Объект, представляющий кноки
-                    var buttons = new List<InlineKeyboardButton[]>();
-                    buttons.Add(new[]
-                    {
-                        //InlineKeyboardButton.WithCallbackData($" Русский" , $"ru"),
-                        //InlineKeyboardButton.WithCallbackData($" English" , $"en"),
-                        InlineKeyboardButton.WithCallbackData($" Подсчет символов" , $"cnt"),
-                        InlineKeyboardButton.WithCallbackData($" Сумма чисел" , $"sum")
-                    });
+                    //var buttons = new List<InlineKeyboardButton[]>();
+                    //buttons.Add(new[]
+                    //{
+                    //    //InlineKeyboardButton.WithCallbackData($" Русский" , $"ru"),
+                    //    //InlineKeyboardButton.WithCallbackData($" English" , $"en"),
+                    //    InlineKeyboardButton.WithCallbackData($" Подсчет символов" , $"cnt"),
+                    //    InlineKeyboardButton.WithCallbackData($" Сумма чисел" , $"sum")
+                    //});
 
-                    // передаем кнопки вместе с сообщением (параметр ReplyMarkup)
-                    await _telegramClient.SendTextMessageAsync(message.Chat.Id, $"<b>  Этот бот учебный. Он подсчитывает сиволы в строке </b> {Environment.NewLine}" +
-                        $"{Environment.NewLine}Или возвращает сумму целых чисел.{Environment.NewLine} выберите режим нижележащими кнопками {Environment.NewLine}", cancellationToken: ct, parseMode: ParseMode.Html, replyMarkup: new InlineKeyboardMarkup(buttons));
+                    //// передаем кнопки вместе с сообщением (параметр ReplyMarkup)
+                    //await _telegramClient.SendTextMessageAsync(message.Chat.Id, $"<b>  Этот бот учебный. Он подсчитывает сиволы в строке </b> {Environment.NewLine}" +
+                    //    $"{Environment.NewLine}Или возвращает сумму целых чисел.{Environment.NewLine} выберите режим нижележащими кнопками {Environment.NewLine}", cancellationToken: ct, parseMode: ParseMode.Html, replyMarkup: new InlineKeyboardMarkup(buttons));
 
                     break;
                 case "/stop":
                     Console.WriteLine(" Получена команда /stoр Бот завершен(?)"); 
                     CancellationTokenSource cts = new(); 
                     cts.Cancel();
-                    
                     break;
                 default:
                     resultMsg = _subTask.Operate(message.Text, sTaskMode);
                     //await _telegramClient.SendTextMessageAsync(message.Chat.Id, "ВЫберите действие нажатием на кнопку.[TMCH]", cancellationToken: ct);
-                    _appSettings.SubTaskMode ="";
                     await _telegramClient.SendTextMessageAsync(message.Chat.Id, resultMsg+"[TMCH9]", cancellationToken: ct);
-                     
+
+                    _appSettings.SubTaskMode =""; //? нужно ли сразу входить из выбранного режима - надо посмотреть
+                    ShowStartMenu(message, ct);   
                     break;
             }
         }
